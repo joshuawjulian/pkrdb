@@ -1,0 +1,13 @@
+{
+	"name": "poker-repo",
+	"version": "1.0.0",
+	"description": "",
+	"scripts": {
+		"web": "pnpm --filter @pkrdb/web",
+		"hand-engine": "pnpm --filter @pkrdb/hand-engine",
+		"upgrade-all": "pnpm -r upgrade --latest"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC"
+}

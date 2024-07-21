@@ -1,0 +1,20 @@
+{
+	"cssVariables.blacklistFolders": [
+		"**/.git",
+		"**/.svn",
+		"**/.hg",
+		"**/CVS",
+		"**/.DS_Store",
+		"**/bower_components",
+		"**/tmp",
+		"**/dist",
+		"**/tests"
+	],
+	"cssVariables.lookupFiles": [
+		"**/web/node_modules/open-props/open-props.min.css",
+		"**/*.css",
+		"**/*.scss",
+		"**/*.sass",
+		"**/*.less"
+	]
+}

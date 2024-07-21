@@ -33,7 +33,7 @@
 
 <div class="tbl" bind:this={tblDiv}>
 	{#each Array.from({ length: numSeats }) as _, i}
-		{@const pos = getXYPosAbs(i, numSeats, width, height)}
+		{@const pos = getXYPosAbs(i, numSeats, width, height, 100)}
 		<div class="seat" style="left: {pos.left - 50}px; top: {pos.top - 50}px;">
 			Player {i} ({pos.left}, {pos.top})
 		</div>

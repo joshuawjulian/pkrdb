@@ -15,14 +15,15 @@ export let getXY = (
 	width: number,
 	height: number,
 ): { x: number; y: number } => {
-	let angle = index * (1 / numberOfPlayers) * 2 * Math.PI;
-	// console.log(angle);
-	let x = getX(angle, width, height);
-	if (angle > Math.PI / 2 && angle < (3 * Math.PI) / 2) {
+	let angDeg = index * (1 / numberOfPlayers) * 360;
+	angDeg = angDeg % 360;
+	let angRad = (angDeg * Math.PI) / 180;
+	let x = getX(angRad, width, height);
+	if (angDeg > 90 && angDeg <= 270) {
 		x = -x;
 	}
-	let y = getY(angle, width, height);
-	if (angle > Math.PI && angle < 2 * Math.PI) {
+	let y = getY(angRad, width, height);
+	if (angDeg >= 180 && angDeg < 360) {
 		y = -y;
 	}
 	return {
@@ -36,8 +37,14 @@ export let getXYPosAbs = (
 	numberOfPlayers: number,
 	width: number,
 	height: number,
+	sizeOfSeat: number,
 ): { left: number; top: number } => {
-	let xy = getXY(index, numberOfPlayers, width / 2, height / 2);
+	let xy = getXY(
+		index,
+		numberOfPlayers,
+		(width - width * 0.1) / 2 - sizeOfSeat / 2,
+		(height - height * 0.1) / 2 - sizeOfSeat / 2,
+	);
 
 	return {
 		left: parseFloat((xy.x + width / 2).toPrecision(5)),

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getXYPosAbs } from '$lib/table/draw';
+	import { getTableXYPosAbs } from '$lib/table/draw';
 	import { onMount } from 'svelte';
 
 	let { numSeats = $bindable() }: { numSeats: number } = $props();
@@ -7,6 +7,10 @@
 	let tblDiv: HTMLDivElement;
 	let width: number = $state(0);
 	let height: number = $state(0);
+
+	let seats = $derived(
+		getTableXYPosAbs(225, 315, numSeats, true, width, height, 100),
+	);
 
 	onMount(() => {
 		width = tblDiv.clientWidth;
@@ -32,8 +36,7 @@
 </script>
 
 <div class="tbl" bind:this={tblDiv}>
-	{#each Array.from({ length: numSeats }) as _, i}
-		{@const pos = getXYPosAbs(i, numSeats, width, height, 100)}
+	{#each seats as pos, i}
 		<div class="seat" style="left: {pos.left - 50}px; top: {pos.top - 50}px;">
 			Player {i} ({pos.left}, {pos.top})
 		</div>

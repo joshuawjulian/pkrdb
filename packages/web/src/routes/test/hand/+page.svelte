@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { cardToString, isPlayerAction, type ActionType, type GameStateType } from '@pkrdb/hand-engine/holdem';
+	import TableWideView from '$lib/components/TableWideView.svelte';
+	import { isPlayerAction, type ActionType, type GameStateType } from '@pkrdb/hand-engine/holdem';
 	let state: GameStateType = {
 		players: [
 			{
@@ -56,21 +57,6 @@
 		],
 	};
 </script>
-{#snippet players(state:GameStateType) }
-<table>
-	<tbody>
-	<tr>
-{#each state.players as player, i}
-		<td>
-			<div>Player {i + 1}</div>
-			<div>Stack: {player.startingStack}</div>
-			<div>Cards: {cardToString(player.cards[0])} {cardToString(player.cards[1])}</div>
-		</td>
-{/each}
-	</tr>
-	</tbody>
-</table>
-{/snippet}
 
 {#snippet displayAction(action:ActionType) }
 	<div>Action: {action.action}</div>
@@ -79,7 +65,7 @@
 	{/if}
 {/snippet}
 
-{@render players(state)}
+<TableWideView state={state} />
 {#each state.actionList as action}
 	{@render displayAction(action)}
 {/each}

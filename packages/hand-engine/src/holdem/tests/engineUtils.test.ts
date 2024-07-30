@@ -1,6 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { actionComplete, findLargestBlind, getSeatOrder } from '../engineUtils';
-import { GameStateType, getBets } from '../state';
+import {
+	actionComplete,
+	findLargestBlind,
+	getSeatOrder,
+} from '../engineUtils.js';
+import { GameStateType, getBets } from '../state.js';
 
 let basicState: GameStateType = {
 	players: [

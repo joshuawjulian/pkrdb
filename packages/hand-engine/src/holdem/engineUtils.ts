@@ -1,20 +1,25 @@
 import {
-	ActionType,
-	DealerActionType,
-	PlayerActionType,
-	PlayerBetType,
-	PlayerIncreaseWagerType,
-	PokerRoundType,
+	type ActionType,
+	type DealerActionType,
+	type PlayerActionType,
+	type PlayerBetType,
+	type PlayerIncreaseWagerType,
+	type PokerRoundType,
 	PokerRounds,
 	increaseWagerAction,
 	isDealerAction,
 	isDealerOptions,
 	isPlayerAction,
 	isPlayerOptions,
-} from './action';
-import { next } from './engine';
-import { GameStateType, StackType, getBets, getBlindsStraddles } from './state';
-import { optionArrayToString } from './tests/testUtil';
+	optionArrayToString,
+} from './action.js';
+import { next } from './engine.js';
+import {
+	type GameStateType,
+	type StackType,
+	getBets,
+	getBlindsStraddles,
+} from './state.js';
 
 export let playerActionsCurrentRound = (
 	state: GameStateType,

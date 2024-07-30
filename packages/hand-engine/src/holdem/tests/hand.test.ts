@@ -1,9 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { next } from '../engine';
-import { validateState } from '../engineUtils';
-import { GameStateType } from '../state';
-import { optionArrayToString } from './testUtil';
-
+import { optionArrayToString } from '../action.js';
+import { next } from '../engine.js';
+import { validateState } from '../engineUtils.js';
+import { GameStateType } from '../state.js';
 let basicFourHandedState: GameStateType = {
 	players: [
 		{

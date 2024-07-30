@@ -7,9 +7,9 @@ import {
 	PokerRoundType,
 	PokerRounds,
 	isDealerAction,
-} from './action';
-import { CardSchema } from './card';
-import { getWagers } from './engineUtils';
+} from './action.js';
+import { CardSchema } from './card.js';
+import { getWagers } from './engineUtils.js';
 
 export const OptionsSchema = z.object({
 	reopenPercent: z.number().default(1.0),

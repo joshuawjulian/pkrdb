@@ -1,6 +1,7 @@
 <script lang="ts">
 	import TableWideView from '$lib/components/TableWideView.svelte';
-	import { isPlayerAction, type ActionType, type GameStateType } from '@pkrdb/hand-engine/holdem';
+	import { isPlayerAction, type ActionType } from '@pkrdb/hand-engine/holdem/action';
+	import { type GameStateType } from '@pkrdb/hand-engine/holdem/state';
 	let state: GameStateType = {
 		players: [
 			{

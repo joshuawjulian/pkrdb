@@ -1,4 +1,8 @@
-import { getNextRoundOption, NextOptionType, PlayerActionType } from './action';
+import {
+	getNextRoundOption,
+	type NextOptionType,
+	type PlayerActionType,
+} from './action.js';
 import {
 	actionComplete,
 	getCurrentRound,
@@ -11,8 +15,8 @@ import {
 	hasNonBlindAction,
 	hasNonBlindStraddleAction,
 	playerActionsCurrentRound,
-} from './engineUtils';
-import { GameStateSchema, GameStateType } from './state';
+} from './engineUtils.js';
+import { GameStateSchema, type GameStateType } from './state.js';
 
 // Attempt to work this through comments
 export let next = (state: GameStateType): NextOptionType[] => {

@@ -1,109 +1,110 @@
 import { z } from 'zod';
-export declare const PlayerFoldSchema: z.ZodObject<{
+
+declare const PlayerFoldSchema: z.ZodObject<{
     seat: z.ZodNumber;
     action: z.ZodLiteral<"fold">;
 }, "strip", z.ZodTypeAny, {
-    action: "fold";
     seat: number;
+    action: "fold";
 }, {
-    action: "fold";
     seat: number;
+    action: "fold";
 }>;
-export type PlayerFoldType = z.infer<typeof PlayerFoldSchema>;
-export declare const PlayerCallSchema: z.ZodObject<{
+type PlayerFoldType = z.infer<typeof PlayerFoldSchema>;
+declare const PlayerCallSchema: z.ZodObject<{
     seat: z.ZodNumber;
     action: z.ZodLiteral<"call">;
     amount: z.ZodNumber;
     isAllIn: z.ZodBoolean;
 }, "strip", z.ZodTypeAny, {
-    action: "call";
     seat: number;
+    action: "call";
     amount: number;
     isAllIn: boolean;
 }, {
-    action: "call";
     seat: number;
+    action: "call";
     amount: number;
     isAllIn: boolean;
 }>;
-export type PlayerCallType = z.infer<typeof PlayerCallSchema>;
-export declare const PlayerBetSchema: z.ZodObject<{
+type PlayerCallType = z.infer<typeof PlayerCallSchema>;
+declare const PlayerBetSchema: z.ZodObject<{
     seat: z.ZodNumber;
     action: z.ZodLiteral<"bet">;
     amount: z.ZodNumber;
     isAllIn: z.ZodBoolean;
 }, "strip", z.ZodTypeAny, {
-    action: "bet";
     seat: number;
+    action: "bet";
     amount: number;
     isAllIn: boolean;
 }, {
-    action: "bet";
     seat: number;
+    action: "bet";
     amount: number;
     isAllIn: boolean;
 }>;
-export type PlayerBetType = z.infer<typeof PlayerBetSchema>;
-export declare const PlayerCheckSchema: z.ZodObject<{
+type PlayerBetType = z.infer<typeof PlayerBetSchema>;
+declare const PlayerCheckSchema: z.ZodObject<{
     seat: z.ZodNumber;
     action: z.ZodLiteral<"check">;
 }, "strip", z.ZodTypeAny, {
-    action: "check";
     seat: number;
+    action: "check";
 }, {
-    action: "check";
     seat: number;
+    action: "check";
 }>;
-export type PlayerCheckType = z.infer<typeof PlayerCheckSchema>;
-export declare const PlayerBlindSchema: z.ZodObject<{
+type PlayerCheckType = z.infer<typeof PlayerCheckSchema>;
+declare const PlayerBlindSchema: z.ZodObject<{
     seat: z.ZodNumber;
     action: z.ZodLiteral<"blind">;
     amount: z.ZodNumber;
     isAllIn: z.ZodBoolean;
 }, "strip", z.ZodTypeAny, {
-    action: "blind";
     seat: number;
+    action: "blind";
     amount: number;
     isAllIn: boolean;
 }, {
-    action: "blind";
     seat: number;
+    action: "blind";
     amount: number;
     isAllIn: boolean;
 }>;
-export type PlayerBlindType = z.infer<typeof PlayerBlindSchema>;
-export declare const PlayerStraddleSchema: z.ZodObject<{
+type PlayerBlindType = z.infer<typeof PlayerBlindSchema>;
+declare const PlayerStraddleSchema: z.ZodObject<{
     seat: z.ZodNumber;
     action: z.ZodLiteral<"straddle">;
     amount: z.ZodNumber;
     isAllIn: z.ZodBoolean;
 }, "strip", z.ZodTypeAny, {
-    action: "straddle";
     seat: number;
+    action: "straddle";
     amount: number;
     isAllIn: boolean;
 }, {
-    action: "straddle";
     seat: number;
+    action: "straddle";
     amount: number;
     isAllIn: boolean;
 }>;
-export type PlayerStraddleType = z.infer<typeof PlayerStraddleSchema>;
-export type PlayerIncreaseWagerType = PlayerBetType | PlayerBlindType | PlayerStraddleType;
-export declare const increaseWagerAction: (action: ActionType) => action is PlayerIncreaseWagerType;
-export declare const PlayerActionsSchema: z.ZodDiscriminatedUnion<"action", [z.ZodObject<{
+type PlayerStraddleType = z.infer<typeof PlayerStraddleSchema>;
+type PlayerIncreaseWagerType = PlayerBetType | PlayerBlindType | PlayerStraddleType;
+declare const increaseWagerAction: (action: ActionType) => action is PlayerIncreaseWagerType;
+declare const PlayerActionsSchema: z.ZodDiscriminatedUnion<"action", [z.ZodObject<{
     seat: z.ZodNumber;
     action: z.ZodLiteral<"bet">;
     amount: z.ZodNumber;
     isAllIn: z.ZodBoolean;
 }, "strip", z.ZodTypeAny, {
-    action: "bet";
     seat: number;
+    action: "bet";
     amount: number;
     isAllIn: boolean;
 }, {
-    action: "bet";
     seat: number;
+    action: "bet";
     amount: number;
     isAllIn: boolean;
 }>, z.ZodObject<{
@@ -112,13 +113,13 @@ export declare const PlayerActionsSchema: z.ZodDiscriminatedUnion<"action", [z.Z
     amount: z.ZodNumber;
     isAllIn: z.ZodBoolean;
 }, "strip", z.ZodTypeAny, {
-    action: "blind";
     seat: number;
+    action: "blind";
     amount: number;
     isAllIn: boolean;
 }, {
-    action: "blind";
     seat: number;
+    action: "blind";
     amount: number;
     isAllIn: boolean;
 }>, z.ZodObject<{
@@ -127,52 +128,52 @@ export declare const PlayerActionsSchema: z.ZodDiscriminatedUnion<"action", [z.Z
     amount: z.ZodNumber;
     isAllIn: z.ZodBoolean;
 }, "strip", z.ZodTypeAny, {
-    action: "call";
     seat: number;
+    action: "call";
     amount: number;
     isAllIn: boolean;
 }, {
-    action: "call";
     seat: number;
+    action: "call";
     amount: number;
     isAllIn: boolean;
 }>, z.ZodObject<{
     seat: z.ZodNumber;
     action: z.ZodLiteral<"check">;
 }, "strip", z.ZodTypeAny, {
-    action: "check";
     seat: number;
+    action: "check";
 }, {
-    action: "check";
     seat: number;
+    action: "check";
 }>, z.ZodObject<{
     seat: z.ZodNumber;
     action: z.ZodLiteral<"fold">;
 }, "strip", z.ZodTypeAny, {
-    action: "fold";
     seat: number;
+    action: "fold";
 }, {
-    action: "fold";
     seat: number;
+    action: "fold";
 }>, z.ZodObject<{
     seat: z.ZodNumber;
     action: z.ZodLiteral<"straddle">;
     amount: z.ZodNumber;
     isAllIn: z.ZodBoolean;
 }, "strip", z.ZodTypeAny, {
-    action: "straddle";
     seat: number;
+    action: "straddle";
     amount: number;
     isAllIn: boolean;
 }, {
-    action: "straddle";
     seat: number;
+    action: "straddle";
     amount: number;
     isAllIn: boolean;
 }>]>;
-export declare const PlayerBlindActions: readonly ["blind", "straddle"];
-export declare const PlayerCloseActions: readonly ["check", "call", "fold"];
-export declare const DealerActionSchema: z.ZodDiscriminatedUnion<"action", [z.ZodObject<{
+declare const PlayerBlindActions: readonly ["blind", "straddle"];
+declare const PlayerCloseActions: readonly ["check", "call", "fold"];
+declare const DealerActionSchema: z.ZodDiscriminatedUnion<"action", [z.ZodObject<{
     action: z.ZodLiteral<"preflop">;
 }, "strip", z.ZodTypeAny, {
     action: "preflop";
@@ -257,21 +258,21 @@ export declare const DealerActionSchema: z.ZodDiscriminatedUnion<"action", [z.Zo
 }, {
     action: "showdown";
 }>]>;
-export type PlayerActionType = z.infer<typeof PlayerActionsSchema>;
-export type DealerActionType = z.infer<typeof DealerActionSchema>;
-export declare const ActionSchema: z.ZodDiscriminatedUnion<"action", [z.ZodObject<{
+type PlayerActionType = z.infer<typeof PlayerActionsSchema>;
+type DealerActionType = z.infer<typeof DealerActionSchema>;
+declare const ActionSchema: z.ZodDiscriminatedUnion<"action", [z.ZodObject<{
     seat: z.ZodNumber;
     action: z.ZodLiteral<"bet">;
     amount: z.ZodNumber;
     isAllIn: z.ZodBoolean;
 }, "strip", z.ZodTypeAny, {
-    action: "bet";
     seat: number;
+    action: "bet";
     amount: number;
     isAllIn: boolean;
 }, {
-    action: "bet";
     seat: number;
+    action: "bet";
     amount: number;
     isAllIn: boolean;
 }>, z.ZodObject<{
@@ -280,13 +281,13 @@ export declare const ActionSchema: z.ZodDiscriminatedUnion<"action", [z.ZodObjec
     amount: z.ZodNumber;
     isAllIn: z.ZodBoolean;
 }, "strip", z.ZodTypeAny, {
-    action: "blind";
     seat: number;
+    action: "blind";
     amount: number;
     isAllIn: boolean;
 }, {
-    action: "blind";
     seat: number;
+    action: "blind";
     amount: number;
     isAllIn: boolean;
 }>, z.ZodObject<{
@@ -295,46 +296,46 @@ export declare const ActionSchema: z.ZodDiscriminatedUnion<"action", [z.ZodObjec
     amount: z.ZodNumber;
     isAllIn: z.ZodBoolean;
 }, "strip", z.ZodTypeAny, {
-    action: "call";
     seat: number;
+    action: "call";
     amount: number;
     isAllIn: boolean;
 }, {
-    action: "call";
     seat: number;
+    action: "call";
     amount: number;
     isAllIn: boolean;
 }>, z.ZodObject<{
     seat: z.ZodNumber;
     action: z.ZodLiteral<"check">;
 }, "strip", z.ZodTypeAny, {
-    action: "check";
     seat: number;
+    action: "check";
 }, {
-    action: "check";
     seat: number;
+    action: "check";
 }>, z.ZodObject<{
     seat: z.ZodNumber;
     action: z.ZodLiteral<"fold">;
 }, "strip", z.ZodTypeAny, {
-    action: "fold";
     seat: number;
+    action: "fold";
 }, {
-    action: "fold";
     seat: number;
+    action: "fold";
 }>, z.ZodObject<{
     seat: z.ZodNumber;
     action: z.ZodLiteral<"straddle">;
     amount: z.ZodNumber;
     isAllIn: z.ZodBoolean;
 }, "strip", z.ZodTypeAny, {
-    action: "straddle";
     seat: number;
+    action: "straddle";
     amount: number;
     isAllIn: boolean;
 }, {
-    action: "straddle";
     seat: number;
+    action: "straddle";
     amount: number;
     isAllIn: boolean;
 }>, z.ZodObject<{
@@ -422,107 +423,107 @@ export declare const ActionSchema: z.ZodDiscriminatedUnion<"action", [z.ZodObjec
 }, {
     action: "showdown";
 }>]>;
-export type ActionType = z.infer<typeof ActionSchema>;
-export declare const PlayerOptionFoldSchema: z.ZodObject<{
+type ActionType = z.infer<typeof ActionSchema>;
+declare const PlayerOptionFoldSchema: z.ZodObject<{
     seat: z.ZodNumber;
     action: z.ZodLiteral<"fold">;
 }, "strip", z.ZodTypeAny, {
-    action: "fold";
     seat: number;
+    action: "fold";
 }, {
-    action: "fold";
     seat: number;
+    action: "fold";
 }>;
-export type PlayerOptionFoldType = z.infer<typeof PlayerOptionFoldSchema>;
-export declare let PlayerOptionBlindSchema: z.ZodObject<{
+type PlayerOptionFoldType = z.infer<typeof PlayerOptionFoldSchema>;
+declare let PlayerOptionBlindSchema: z.ZodObject<{
     seat: z.ZodNumber;
     action: z.ZodLiteral<"blind">;
 }, "strip", z.ZodTypeAny, {
-    action: "blind";
     seat: number;
+    action: "blind";
 }, {
-    action: "blind";
     seat: number;
+    action: "blind";
 }>;
-export type PlayerOptionBlindType = z.infer<typeof PlayerOptionBlindSchema>;
-export declare let PlayerOptionStraddleSchema: z.ZodObject<{
+type PlayerOptionBlindType = z.infer<typeof PlayerOptionBlindSchema>;
+declare let PlayerOptionStraddleSchema: z.ZodObject<{
     seat: z.ZodNumber;
     action: z.ZodLiteral<"straddle">;
 }, "strip", z.ZodTypeAny, {
-    action: "straddle";
     seat: number;
+    action: "straddle";
 }, {
-    action: "straddle";
     seat: number;
+    action: "straddle";
 }>;
-export type PlayerOptionStraddleType = z.infer<typeof PlayerOptionStraddleSchema>;
-export declare const PlayerOptionCallSchema: z.ZodObject<{
+type PlayerOptionStraddleType = z.infer<typeof PlayerOptionStraddleSchema>;
+declare const PlayerOptionCallSchema: z.ZodObject<{
     seat: z.ZodNumber;
     action: z.ZodLiteral<"call">;
     amount: z.ZodNumber;
     isAllIn: z.ZodBoolean;
 }, "strip", z.ZodTypeAny, {
-    action: "call";
     seat: number;
+    action: "call";
     amount: number;
     isAllIn: boolean;
 }, {
-    action: "call";
     seat: number;
+    action: "call";
     amount: number;
     isAllIn: boolean;
 }>;
-export type PlayerOptionCallType = z.infer<typeof PlayerOptionCallSchema>;
-export declare const PlayerOptionBetSchema: z.ZodObject<{
+type PlayerOptionCallType = z.infer<typeof PlayerOptionCallSchema>;
+declare const PlayerOptionBetSchema: z.ZodObject<{
     seat: z.ZodNumber;
     action: z.ZodLiteral<"bet">;
     min: z.ZodUnion<[z.ZodNumber, z.ZodLiteral<"unknown">]>;
     max: z.ZodUnion<[z.ZodNumber, z.ZodLiteral<"unknown">]>;
 }, "strip", z.ZodTypeAny, {
-    action: "bet";
     seat: number;
+    action: "bet";
     min: number | "unknown";
     max: number | "unknown";
 }, {
-    action: "bet";
     seat: number;
+    action: "bet";
     min: number | "unknown";
     max: number | "unknown";
 }>;
-export type PlayerOptionBetType = z.infer<typeof PlayerOptionBetSchema>;
-export declare const PlayerOptionCheckSchema: z.ZodObject<{
+type PlayerOptionBetType = z.infer<typeof PlayerOptionBetSchema>;
+declare const PlayerOptionCheckSchema: z.ZodObject<{
     seat: z.ZodNumber;
     action: z.ZodLiteral<"check">;
 }, "strip", z.ZodTypeAny, {
-    action: "check";
     seat: number;
+    action: "check";
 }, {
-    action: "check";
     seat: number;
+    action: "check";
 }>;
-export type PlayerOptionCheckType = z.infer<typeof PlayerOptionCheckSchema>;
-export declare const PlayerOptionSchema: z.ZodDiscriminatedUnion<"action", [z.ZodObject<{
+type PlayerOptionCheckType = z.infer<typeof PlayerOptionCheckSchema>;
+declare const PlayerOptionSchema: z.ZodDiscriminatedUnion<"action", [z.ZodObject<{
     seat: z.ZodNumber;
     action: z.ZodLiteral<"fold">;
 }, "strip", z.ZodTypeAny, {
-    action: "fold";
     seat: number;
+    action: "fold";
 }, {
-    action: "fold";
     seat: number;
+    action: "fold";
 }>, z.ZodObject<{
     seat: z.ZodNumber;
     action: z.ZodLiteral<"call">;
     amount: z.ZodNumber;
     isAllIn: z.ZodBoolean;
 }, "strip", z.ZodTypeAny, {
-    action: "call";
     seat: number;
+    action: "call";
     amount: number;
     isAllIn: boolean;
 }, {
-    action: "call";
     seat: number;
+    action: "call";
     amount: number;
     isAllIn: boolean;
 }>, z.ZodObject<{
@@ -531,45 +532,45 @@ export declare const PlayerOptionSchema: z.ZodDiscriminatedUnion<"action", [z.Zo
     min: z.ZodUnion<[z.ZodNumber, z.ZodLiteral<"unknown">]>;
     max: z.ZodUnion<[z.ZodNumber, z.ZodLiteral<"unknown">]>;
 }, "strip", z.ZodTypeAny, {
-    action: "bet";
     seat: number;
+    action: "bet";
     min: number | "unknown";
     max: number | "unknown";
 }, {
-    action: "bet";
     seat: number;
+    action: "bet";
     min: number | "unknown";
     max: number | "unknown";
 }>, z.ZodObject<{
     seat: z.ZodNumber;
     action: z.ZodLiteral<"check">;
 }, "strip", z.ZodTypeAny, {
-    action: "check";
     seat: number;
+    action: "check";
 }, {
-    action: "check";
     seat: number;
+    action: "check";
 }>, z.ZodObject<{
     seat: z.ZodNumber;
     action: z.ZodLiteral<"blind">;
 }, "strip", z.ZodTypeAny, {
-    action: "blind";
     seat: number;
+    action: "blind";
 }, {
-    action: "blind";
     seat: number;
+    action: "blind";
 }>, z.ZodObject<{
     seat: z.ZodNumber;
     action: z.ZodLiteral<"straddle">;
 }, "strip", z.ZodTypeAny, {
-    action: "straddle";
     seat: number;
+    action: "straddle";
 }, {
-    action: "straddle";
     seat: number;
+    action: "straddle";
 }>]>;
-export type PlayerOptionType = z.infer<typeof PlayerOptionSchema>;
-export declare const DealerOptionSchema: z.ZodDiscriminatedUnion<"action", [z.ZodObject<{
+type PlayerOptionType = z.infer<typeof PlayerOptionSchema>;
+declare const DealerOptionSchema: z.ZodDiscriminatedUnion<"action", [z.ZodObject<{
     action: z.ZodLiteral<"preflop">;
 }, "strip", z.ZodTypeAny, {
     action: "preflop";
@@ -609,31 +610,31 @@ export declare const DealerOptionSchema: z.ZodDiscriminatedUnion<"action", [z.Zo
 }, {
     action: "showdown";
 }>]>;
-export declare const PokerRounds: readonly ["preflop", "flop", "turn", "river"];
-export type PokerRoundType = (typeof PokerRounds)[number];
-export type DealerOptionType = z.infer<typeof DealerOptionSchema>;
-export declare const NextOptionSchema: z.ZodDiscriminatedUnion<"action", [z.ZodObject<{
+declare const PokerRounds: readonly ["preflop", "flop", "turn", "river"];
+type PokerRoundType = (typeof PokerRounds)[number];
+type DealerOptionType = z.infer<typeof DealerOptionSchema>;
+declare const NextOptionSchema: z.ZodDiscriminatedUnion<"action", [z.ZodObject<{
     seat: z.ZodNumber;
     action: z.ZodLiteral<"fold">;
 }, "strip", z.ZodTypeAny, {
-    action: "fold";
     seat: number;
+    action: "fold";
 }, {
-    action: "fold";
     seat: number;
+    action: "fold";
 }>, z.ZodObject<{
     seat: z.ZodNumber;
     action: z.ZodLiteral<"call">;
     amount: z.ZodNumber;
     isAllIn: z.ZodBoolean;
 }, "strip", z.ZodTypeAny, {
-    action: "call";
     seat: number;
+    action: "call";
     amount: number;
     isAllIn: boolean;
 }, {
-    action: "call";
     seat: number;
+    action: "call";
     amount: number;
     isAllIn: boolean;
 }>, z.ZodObject<{
@@ -642,42 +643,42 @@ export declare const NextOptionSchema: z.ZodDiscriminatedUnion<"action", [z.ZodO
     min: z.ZodUnion<[z.ZodNumber, z.ZodLiteral<"unknown">]>;
     max: z.ZodUnion<[z.ZodNumber, z.ZodLiteral<"unknown">]>;
 }, "strip", z.ZodTypeAny, {
-    action: "bet";
     seat: number;
+    action: "bet";
     min: number | "unknown";
     max: number | "unknown";
 }, {
-    action: "bet";
     seat: number;
+    action: "bet";
     min: number | "unknown";
     max: number | "unknown";
 }>, z.ZodObject<{
     seat: z.ZodNumber;
     action: z.ZodLiteral<"check">;
 }, "strip", z.ZodTypeAny, {
-    action: "check";
     seat: number;
+    action: "check";
 }, {
-    action: "check";
     seat: number;
+    action: "check";
 }>, z.ZodObject<{
     seat: z.ZodNumber;
     action: z.ZodLiteral<"blind">;
 }, "strip", z.ZodTypeAny, {
-    action: "blind";
     seat: number;
+    action: "blind";
 }, {
-    action: "blind";
     seat: number;
+    action: "blind";
 }>, z.ZodObject<{
     seat: z.ZodNumber;
     action: z.ZodLiteral<"straddle">;
 }, "strip", z.ZodTypeAny, {
-    action: "straddle";
     seat: number;
+    action: "straddle";
 }, {
-    action: "straddle";
     seat: number;
+    action: "straddle";
 }>, z.ZodObject<{
     action: z.ZodLiteral<"preflop">;
 }, "strip", z.ZodTypeAny, {
@@ -718,11 +719,14 @@ export declare const NextOptionSchema: z.ZodDiscriminatedUnion<"action", [z.ZodO
 }, {
     action: "showdown";
 }>]>;
-export type NextOptionType = z.infer<typeof NextOptionSchema>;
-export declare const isPlayerAction: (action: ActionType) => action is PlayerActionType;
-export declare const isDealerAction: (action: ActionType) => action is DealerActionType;
-export declare let isPlayerOption: (option: NextOptionType) => option is PlayerOptionType;
-export declare let isPlayerOptions: (options: NextOptionType[]) => options is PlayerOptionType[];
-export declare let isDealerOption: (option: NextOptionType) => option is DealerOptionType;
-export declare let isDealerOptions: (options: NextOptionType[]) => options is DealerOptionType[];
-export declare let getNextRoundOption: (round: PokerRoundType) => DealerOptionType;
+type NextOptionType = z.infer<typeof NextOptionSchema>;
+declare const isPlayerAction: (action: ActionType) => action is PlayerActionType;
+declare const isDealerAction: (action: ActionType) => action is DealerActionType;
+declare let isPlayerOption: (option: NextOptionType) => option is PlayerOptionType;
+declare let isPlayerOptions: (options: NextOptionType[]) => options is PlayerOptionType[];
+declare let isDealerOption: (option: NextOptionType) => option is DealerOptionType;
+declare let isDealerOptions: (options: NextOptionType[]) => options is DealerOptionType[];
+declare let getNextRoundOption: (round: PokerRoundType) => DealerOptionType;
+declare let optionArrayToString: (options: NextOptionType[]) => string[];
+
+export { ActionSchema, type ActionType, DealerActionSchema, type DealerActionType, DealerOptionSchema, type DealerOptionType, NextOptionSchema, type NextOptionType, type PlayerActionType, PlayerActionsSchema, PlayerBetSchema, type PlayerBetType, PlayerBlindActions, PlayerBlindSchema, type PlayerBlindType, PlayerCallSchema, type PlayerCallType, PlayerCheckSchema, type PlayerCheckType, PlayerCloseActions, PlayerFoldSchema, type PlayerFoldType, type PlayerIncreaseWagerType, PlayerOptionBetSchema, type PlayerOptionBetType, PlayerOptionBlindSchema, type PlayerOptionBlindType, PlayerOptionCallSchema, type PlayerOptionCallType, PlayerOptionCheckSchema, type PlayerOptionCheckType, PlayerOptionFoldSchema, type PlayerOptionFoldType, PlayerOptionSchema, PlayerOptionStraddleSchema, type PlayerOptionStraddleType, type PlayerOptionType, PlayerStraddleSchema, type PlayerStraddleType, type PokerRoundType, PokerRounds, getNextRoundOption, increaseWagerAction, isDealerAction, isDealerOption, isDealerOptions, isPlayerAction, isPlayerOption, isPlayerOptions, optionArrayToString };

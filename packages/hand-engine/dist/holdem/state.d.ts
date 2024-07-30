@@ -1,16 +1,17 @@
 import { z } from 'zod';
-import { PlayerBetType, PlayerBlindType, PlayerStraddleType, PokerRoundType } from './action';
-export declare const OptionsSchema: z.ZodObject<{
+import { PokerRoundType, PlayerBetType, PlayerStraddleType, PlayerBlindType } from './action.js';
+
+declare const OptionsSchema: z.ZodObject<{
     reopenPercent: z.ZodDefault<z.ZodNumber>;
 }, "strip", z.ZodTypeAny, {
     reopenPercent: number;
 }, {
     reopenPercent?: number | undefined;
 }>;
-export type OptionsType = z.infer<typeof OptionsSchema>;
-export declare const StackSchema: z.ZodUnion<[z.ZodNumber, z.ZodLiteral<"unknown">]>;
-export type StackType = z.infer<typeof StackSchema>;
-export declare const GameStateSchema: z.ZodObject<{
+type OptionsType = z.infer<typeof OptionsSchema>;
+declare const StackSchema: z.ZodUnion<[z.ZodNumber, z.ZodLiteral<"unknown">]>;
+type StackType = z.infer<typeof StackSchema>;
+declare const GameStateSchema: z.ZodObject<{
     options: z.ZodDefault<z.ZodObject<{
         reopenPercent: z.ZodDefault<z.ZodNumber>;
     }, "strip", z.ZodTypeAny, {
@@ -24,13 +25,13 @@ export declare const GameStateSchema: z.ZodObject<{
         amount: z.ZodNumber;
         isAllIn: z.ZodBoolean;
     }, "strip", z.ZodTypeAny, {
-        action: "bet";
         seat: number;
+        action: "bet";
         amount: number;
         isAllIn: boolean;
     }, {
-        action: "bet";
         seat: number;
+        action: "bet";
         amount: number;
         isAllIn: boolean;
     }>, z.ZodObject<{
@@ -39,13 +40,13 @@ export declare const GameStateSchema: z.ZodObject<{
         amount: z.ZodNumber;
         isAllIn: z.ZodBoolean;
     }, "strip", z.ZodTypeAny, {
-        action: "blind";
         seat: number;
+        action: "blind";
         amount: number;
         isAllIn: boolean;
     }, {
-        action: "blind";
         seat: number;
+        action: "blind";
         amount: number;
         isAllIn: boolean;
     }>, z.ZodObject<{
@@ -54,46 +55,46 @@ export declare const GameStateSchema: z.ZodObject<{
         amount: z.ZodNumber;
         isAllIn: z.ZodBoolean;
     }, "strip", z.ZodTypeAny, {
-        action: "call";
         seat: number;
+        action: "call";
         amount: number;
         isAllIn: boolean;
     }, {
-        action: "call";
         seat: number;
+        action: "call";
         amount: number;
         isAllIn: boolean;
     }>, z.ZodObject<{
         seat: z.ZodNumber;
         action: z.ZodLiteral<"check">;
     }, "strip", z.ZodTypeAny, {
-        action: "check";
         seat: number;
+        action: "check";
     }, {
-        action: "check";
         seat: number;
+        action: "check";
     }>, z.ZodObject<{
         seat: z.ZodNumber;
         action: z.ZodLiteral<"fold">;
     }, "strip", z.ZodTypeAny, {
-        action: "fold";
         seat: number;
+        action: "fold";
     }, {
-        action: "fold";
         seat: number;
+        action: "fold";
     }>, z.ZodObject<{
         seat: z.ZodNumber;
         action: z.ZodLiteral<"straddle">;
         amount: z.ZodNumber;
         isAllIn: z.ZodBoolean;
     }, "strip", z.ZodTypeAny, {
-        action: "straddle";
         seat: number;
+        action: "straddle";
         amount: number;
         isAllIn: boolean;
     }, {
-        action: "straddle";
         seat: number;
+        action: "straddle";
         amount: number;
         isAllIn: boolean;
     }>, z.ZodObject<{
@@ -194,46 +195,46 @@ export declare const GameStateSchema: z.ZodObject<{
             suit: "s" | "h" | "d" | "c" | "x";
         }>, "many">;
     }, "strip", z.ZodTypeAny, {
-        startingStack: number | "unknown";
         cards: {
             rank: "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "T" | "J" | "Q" | "K" | "A" | "X";
             suit: "s" | "h" | "d" | "c" | "x";
         }[];
+        startingStack: number | "unknown";
     }, {
-        startingStack: number | "unknown";
         cards: {
             rank: "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "T" | "J" | "Q" | "K" | "A" | "X";
             suit: "s" | "h" | "d" | "c" | "x";
         }[];
+        startingStack: number | "unknown";
     }>, "many">;
 }, "strip", z.ZodTypeAny, {
     options: {
         reopenPercent: number;
     };
     actionList: ({
-        action: "bet";
         seat: number;
-        amount: number;
-        isAllIn: boolean;
-    } | {
-        action: "blind";
-        seat: number;
-        amount: number;
-        isAllIn: boolean;
-    } | {
-        action: "call";
-        seat: number;
-        amount: number;
-        isAllIn: boolean;
-    } | {
-        action: "check";
-        seat: number;
-    } | {
         action: "fold";
-        seat: number;
     } | {
-        action: "straddle";
         seat: number;
+        action: "call";
+        amount: number;
+        isAllIn: boolean;
+    } | {
+        seat: number;
+        action: "bet";
+        amount: number;
+        isAllIn: boolean;
+    } | {
+        seat: number;
+        action: "check";
+    } | {
+        seat: number;
+        action: "blind";
+        amount: number;
+        isAllIn: boolean;
+    } | {
+        seat: number;
+        action: "straddle";
         amount: number;
         isAllIn: boolean;
     } | {
@@ -260,37 +261,37 @@ export declare const GameStateSchema: z.ZodObject<{
         action: "showdown";
     })[];
     players: {
-        startingStack: number | "unknown";
         cards: {
             rank: "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "T" | "J" | "Q" | "K" | "A" | "X";
             suit: "s" | "h" | "d" | "c" | "x";
         }[];
+        startingStack: number | "unknown";
     }[];
 }, {
     actionList: ({
-        action: "bet";
         seat: number;
-        amount: number;
-        isAllIn: boolean;
-    } | {
-        action: "blind";
-        seat: number;
-        amount: number;
-        isAllIn: boolean;
-    } | {
-        action: "call";
-        seat: number;
-        amount: number;
-        isAllIn: boolean;
-    } | {
-        action: "check";
-        seat: number;
-    } | {
         action: "fold";
-        seat: number;
     } | {
-        action: "straddle";
         seat: number;
+        action: "call";
+        amount: number;
+        isAllIn: boolean;
+    } | {
+        seat: number;
+        action: "bet";
+        amount: number;
+        isAllIn: boolean;
+    } | {
+        seat: number;
+        action: "check";
+    } | {
+        seat: number;
+        action: "blind";
+        amount: number;
+        isAllIn: boolean;
+    } | {
+        seat: number;
+        action: "straddle";
         amount: number;
         isAllIn: boolean;
     } | {
@@ -317,28 +318,30 @@ export declare const GameStateSchema: z.ZodObject<{
         action: "showdown";
     })[];
     players: {
-        startingStack: number | "unknown";
         cards: {
             rank: "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "T" | "J" | "Q" | "K" | "A" | "X";
             suit: "s" | "h" | "d" | "c" | "x";
         }[];
+        startingStack: number | "unknown";
     }[];
     options?: {
         reopenPercent?: number | undefined;
     } | undefined;
 }>;
-export type GameStateType = z.infer<typeof GameStateSchema>;
-export declare const stateAtIndex: (state: GameStateType, index: number) => GameStateType;
-export type WageredEachRoundType = Record<number, Record<PokerRoundType, number>>;
-export declare const wageredEachRound: (state: GameStateType) => WageredEachRoundType;
-export declare const remainingStackSize: (state: GameStateType) => Record<number, number | "unknown">;
-export declare const rotateArray: <T>(arr: T[], count: number) => T[];
-export declare const nextSeat: (seats: number[]) => number[];
-export type RoundIndiciesType = {
+type GameStateType = z.infer<typeof GameStateSchema>;
+declare const stateAtIndex: (state: GameStateType, index: number) => GameStateType;
+type WageredEachRoundType = Record<number, Record<PokerRoundType, number>>;
+declare const wageredEachRound: (state: GameStateType) => WageredEachRoundType;
+declare const remainingStackSize: (state: GameStateType) => Record<number, number | "unknown">;
+declare const rotateArray: <T>(arr: T[], count: number) => T[];
+declare const nextSeat: (seats: number[]) => number[];
+type RoundIndiciesType = {
     [round in PokerRoundType]: number;
 };
-export declare let getRoundIndicies: (state: GameStateType) => RoundIndiciesType;
-export declare const toString: (state: GameStateType) => string;
-export declare let actionListToString: (state: GameStateType) => string;
-export declare let getBets: (state: GameStateType) => PlayerBetType[];
-export declare let getBlindsStraddles: (state: GameStateType) => (PlayerStraddleType | PlayerBlindType)[];
+declare let getRoundIndicies: (state: GameStateType) => RoundIndiciesType;
+declare const toString: (state: GameStateType) => string;
+declare let actionListToString: (state: GameStateType) => string;
+declare let getBets: (state: GameStateType) => PlayerBetType[];
+declare let getBlindsStraddles: (state: GameStateType) => (PlayerStraddleType | PlayerBlindType)[];
+
+export { GameStateSchema, type GameStateType, OptionsSchema, type OptionsType, type RoundIndiciesType, StackSchema, type StackType, type WageredEachRoundType, actionListToString, getBets, getBlindsStraddles, getRoundIndicies, nextSeat, remainingStackSize, rotateArray, stateAtIndex, toString, wageredEachRound };

@@ -1,29 +1,23 @@
 {
 	"name": "@pkrdb/hand-engine",
 	"type": "module",
-	"main": "./dist/index.js",
 	"exports": {
-		".": {
-			"import": "./dist/index.js",
-			"require": "./dist/index.js"
-		},
-		"./holdem": {
-			"import": "./dist/holdem/index.js",
-			"require": "./dist/holdem/index.js"
+		"./*": {
+			"types": "./dist/*.d.ts",
+			"default": "./dist/*.js"
 		}
 	},
 	"devDependencies": {
-		"@tsconfig/recommended": "^1.0.7",
-		"@types/node": "^20.14.12",
-		"tsup": "^8.2.2",
-		"typescript": "^5.5.4",
-		"vitest": "^2.0.4"
+		"@types/node": "^22.0.0",
+		"tsup": "latest",
+		"typescript": "latest",
+		"vitest": "latest"
 	},
 	"dependencies": {
 		"zod": "^3.23.8"
 	},
 	"scripts": {
-		"test": "vitest",
-		"build": "tsc -p tsconfig.build.json"
+		"dev": "tsc --watch",
+		"build": "tsup"
 	}
 }

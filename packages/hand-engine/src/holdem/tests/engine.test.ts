@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { next } from '../engine';
-import { getMinMaxBet } from '../engineUtils';
-import { GameStateType } from '../state';
+import { next } from '../engine.js';
+import { getMinMaxBet } from '../engineUtils.js';
+import { GameStateType } from '../state.js';
 let basicState: GameStateType = {
 	players: [
 		{

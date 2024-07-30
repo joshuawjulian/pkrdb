@@ -1,5 +1,6 @@
 <script lang="ts">
-	import type { GameStateType } from '@pkrdb/hand-engine';
+	import { getPositionName } from '@pkrdb/hand-engine/holdem/seat';
+	import type { GameStateType } from '@pkrdb/hand-engine/holdem/state';
 
 	let { state }: { state: GameStateType } = $props();
 </script>
@@ -8,7 +9,7 @@
 	{#each state.players as player, i}
 		<div class="player">
 			<div class="name">{i}</div>
-			<div class="stack">{player.startingStack}</div>
+			<div class="stack">{getPositionName(state, i)}</div>
 			<div class="hand">{player.cards}</div>
 		</div>
 	{/each}

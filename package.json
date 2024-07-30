@@ -4,7 +4,7 @@
 	"description": "",
 	"scripts": {
 		"web": "pnpm --filter @pkrdb/web",
-		"hand-engine": "pnpm --filter @pkrdb/hand-engine",
+		"eng": "pnpm --filter @pkrdb/hand-engine",
 		"upgrade-all": "pnpm -r upgrade --latest"
 	},
 	"keywords": [],

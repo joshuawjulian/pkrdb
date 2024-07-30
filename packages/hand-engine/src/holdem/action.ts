@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { CardSchema } from './card';
+import { CardSchema } from './card.js';
 
 export const PlayerFoldSchema = z.object({
 	seat: z.number(),
@@ -233,4 +233,11 @@ export let getNextRoundOption = (round: PokerRoundType): DealerOptionType => {
 	} else {
 		return { action: 'showdown' };
 	}
+};
+
+export let optionArrayToString = (options: NextOptionType[]): string[] => {
+	return options.reduce<string[]>(
+		(acc, option) => [...acc, option.action],
+		new Array<string>(),
+	);
 };

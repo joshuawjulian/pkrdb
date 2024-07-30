@@ -1,3 +1,7 @@
-import { NextOptionType } from './action';
-import { GameStateType } from './state';
-export declare let next: (state: GameStateType) => NextOptionType[];
+import { NextOptionType } from './action.js';
+import { GameStateType } from './state.js';
+import 'zod';
+
+declare let next: (state: GameStateType) => NextOptionType[];
+
+export { next };

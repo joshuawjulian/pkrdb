@@ -1,5 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { GameStateSchema, GameStateType, remainingStackSize } from '../state';
+import {
+	GameStateSchema,
+	GameStateType,
+	remainingStackSize,
+} from '../state.js';
 
 export const gameStateSimpleSetup: GameStateType = {
 	options: {

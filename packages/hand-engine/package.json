@@ -18,6 +18,7 @@
 	},
 	"scripts": {
 		"dev": "tsc --watch",
-		"build": "tsup"
+		"build": "tsup",
+		"test": "vitest"
 	}
 }

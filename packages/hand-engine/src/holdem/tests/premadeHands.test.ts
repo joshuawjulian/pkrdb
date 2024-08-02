@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { GameStateSchema, type GameStateType } from '../state.js';
 
-let twoBlindFullRing: GameStateType = {
+let twoBlindSixHanded: GameStateType = {
 	options: {
 		reopenPercent: 1.0,
 	},
@@ -81,10 +81,30 @@ let twoBlindFullRing: GameStateType = {
 	],
 };
 
+export let twoBlindNineHanded: GameStateType = {
+	options: {
+		reopenPercent: 1.0,
+	},
+	players: Array(9).fill({
+		startingStack: 100,
+		cards: [
+			{ rank: 'X', suit: 'x' },
+			{ rank: 'X', suit: 'x' },
+		],
+	}),
+	actionList: [],
+};
+
 describe('Premade Hands', () => {
-	describe('twoBlindFullRing', () => {
-		it('twoBlindFullRing should parse successfully', () => {
-			expect(GameStateSchema.safeParse(twoBlindFullRing).success).toBe(true);
+	describe('twoBlindSixHanded', () => {
+		it('twoBlindSixHanded should parse successfully', () => {
+			expect(GameStateSchema.safeParse(twoBlindSixHanded).success).toBe(true);
+		});
+	});
+
+	describe('twoBlindNineHanded', () => {
+		it('twoBlindNineHanded should parse successfully', () => {
+			expect(GameStateSchema.safeParse(twoBlindNineHanded).success).toBe(true);
 		});
 	});
 });

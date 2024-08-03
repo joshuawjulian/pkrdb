@@ -115,14 +115,14 @@ describe('validateState()', () => {
 				reopenPercent: 1.0,
 			},
 			actionList: [
-				{ action: 'preflop' },
-				{ action: 'blind', seat: 0, amount: 1, isAllIn: false },
-				{ action: 'blind', seat: 1, amount: 2, isAllIn: false },
-				{ action: 'call', seat: 2, amount: 2, isAllIn: false },
-				{ action: 'bet', seat: 3, amount: 25, isAllIn: false },
-				{ action: 'call', seat: 0, amount: 25, isAllIn: true },
-				{ action: 'fold', seat: 1 },
-				{ action: 'fold', seat: 2 },
+				{ action: 'preflop' }, //0
+				{ action: 'blind', seat: 0, amount: 1, isAllIn: false }, //1
+				{ action: 'blind', seat: 1, amount: 2, isAllIn: false }, //2
+				{ action: 'call', seat: 2, amount: 2, isAllIn: false }, //3
+				{ action: 'bet', seat: 3, amount: 25, isAllIn: false }, //4
+				{ action: 'call', seat: 0, amount: 25, isAllIn: true }, //5
+				{ action: 'fold', seat: 1 }, //6
+				{ action: 'fold', seat: 2 }, //7
 				{
 					action: 'flop',
 					flop: [
@@ -130,7 +130,7 @@ describe('validateState()', () => {
 						{ rank: 'X', suit: 'x' },
 						{ rank: 'X', suit: 'x' },
 					],
-				},
+				}, //8
 				{ action: 'turn', turn: { rank: 'X', suit: 'x' } },
 				{ action: 'river', river: { rank: 'X', suit: 'x' } },
 			],

@@ -390,14 +390,20 @@ export let actionComplete = (state: GameStateType): boolean => {
 	let seats = getSeatsAtThisRoundStart(state);
 	let largestWager = getLargestWagerAmount(state);
 
+	// check if we need to even play this round
+	// all players are all in or have folded
+	if (playerActions.length === 0 && seats.length <= 1) {
+		return true;
+	}
+
 	// no bets, ensure everyone has acted (checked or folded)
 	// and it isnt preflop
 	if (
+		playerActions.length === seats.length &&
 		largestWager === 0 &&
-		getBlindsStraddles(state).length === 0 &&
 		getCurrentRound(state) !== 'preflop'
 	) {
-		return !(playerActions.length < seats.length);
+		return true;
 	}
 
 	//preflop blind/straddle edge case

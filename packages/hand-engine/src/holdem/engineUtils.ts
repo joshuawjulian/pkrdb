@@ -392,8 +392,12 @@ export let actionComplete = (state: GameStateType): boolean => {
 
 	// no bets, ensure everyone has acted (checked or folded)
 	// and it isnt preflop
-	if (largestWager === 0 && getBlindsStraddles(state).length === 0) {
-		return playerActions.length < seats.length;
+	if (
+		largestWager === 0 &&
+		getBlindsStraddles(state).length === 0 &&
+		getCurrentRound(state) !== 'preflop'
+	) {
+		return !(playerActions.length < seats.length);
 	}
 
 	//preflop blind/straddle edge case
@@ -498,7 +502,9 @@ export let validateAction = (
 		}
 	}
 
-	return 'Something went wrong';
+	return `Something went wrong => received action: ${
+		nextAction.action
+	} | options: ${optionArrayToString(options)}`;
 };
 
 export let validateState = (state: GameStateType): boolean | string => {

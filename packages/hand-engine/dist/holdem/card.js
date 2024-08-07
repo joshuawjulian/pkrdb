@@ -38,7 +38,7 @@ var suitToCharacter = (suit) => {
     case "c":
       return "\u2663";
   }
-  return "\xBF";
+  return "x";
 };
 var cardToString = (card) => {
   return card.rank + suitToCharacter(card.suit);

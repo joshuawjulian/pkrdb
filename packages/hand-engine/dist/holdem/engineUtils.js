@@ -629,8 +629,11 @@ var actionComplete = (state) => {
   let playerActions = playerActionsCurrentRound(state);
   let seats = getSeatsAtThisRoundStart(state);
   let largestWager = getLargestWagerAmount(state);
-  if (largestWager === 0 && getBlindsStraddles(state).length === 0) {
-    return playerActions.length < seats.length;
+  if (playerActions.length === 0 && seats.length <= 1) {
+    return true;
+  }
+  if (playerActions.length === seats.length && largestWager === 0 && getCurrentRound(state) !== "preflop") {
+    return true;
   }
   if (getCurrentRound(state) === "preflop" && getBets(state).length === 0) {
     return playerActions.length === seats.length + getBlindsStraddles(state).length;
@@ -701,7 +704,7 @@ var validateAction = (state, nextAction) => {
       return `Bet amount ${nextAction.amount} not in range ${option.min} - ${option.max}`;
     }
   }
-  return "Something went wrong";
+  return `Something went wrong => received action: ${nextAction.action} | options: ${optionArrayToString(options)}`;
 };
 var validateState = (state) => {
   for (let i = 0; i < state.actionList.length; i++) {

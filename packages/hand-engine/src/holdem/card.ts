@@ -45,7 +45,7 @@ export let suitToCharacter = (suit: CardSuitType) => {
 		case 'c':
 			return '♣';
 	}
-	return '¿';
+	return 'x';
 };
 
 export let cardToString = (card: CardType) => {

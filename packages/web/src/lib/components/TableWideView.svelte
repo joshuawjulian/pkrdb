@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { cardToString } from '@pkrdb/hand-engine/holdem/card';
 	import { getPositionName } from '@pkrdb/hand-engine/holdem/seat';
 	import type { GameStateType } from '@pkrdb/hand-engine/holdem/state';
 
@@ -9,8 +10,11 @@
 	{#each state.players as player, i}
 		<div class="player">
 			<div class="name">{i}</div>
-			<div class="stack">{getPositionName(state, i)}</div>
-			<div class="hand">{player.cards}</div>
+			<div class="position">{getPositionName(state, i).shortName}</div>
+			<div class="stack">{player.startingStack}</div>
+			<div class="hand">
+				{cardToString(player.cards[0])}{cardToString(player.cards[1])}
+			</div>
 		</div>
 	{/each}
 </section>
@@ -20,15 +24,14 @@
 		width: 100%;
 		display: flex;
 		gap: 2rem;
-		border: 1rem solid var(--brand);
+		border: 0.25rem solid var(--brand);
+		justify-content: space-around;
 	}
 
 	.player {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		border: 1px solid var(--border-color);
-		border-radius: 0.5rem;
 		padding: 1rem;
 	}
 </style>

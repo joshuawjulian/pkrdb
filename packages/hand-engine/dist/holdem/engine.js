@@ -477,8 +477,11 @@ var actionComplete = (state) => {
   let playerActions = playerActionsCurrentRound(state);
   let seats = getSeatsAtThisRoundStart(state);
   let largestWager = getLargestWagerAmount(state);
-  if (largestWager === 0 && getBlindsStraddles(state).length === 0) {
-    return playerActions.length < seats.length;
+  if (playerActions.length === 0 && seats.length <= 1) {
+    return true;
+  }
+  if (playerActions.length === seats.length && largestWager === 0 && getCurrentRound(state) !== "preflop") {
+    return true;
   }
   if (getCurrentRound(state) === "preflop" && getBets(state).length === 0) {
     return playerActions.length === seats.length + getBlindsStraddles(state).length;

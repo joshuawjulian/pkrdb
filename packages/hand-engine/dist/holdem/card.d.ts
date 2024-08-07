@@ -14,7 +14,7 @@ declare const CardSchema: z.ZodObject<{
     suit: "s" | "h" | "d" | "c" | "x";
 }>;
 type CardType = z.infer<typeof CardSchema>;
-declare let suitToCharacter: (suit: CardSuitType) => "♠" | "♥" | "♦" | "♣" | "¿";
+declare let suitToCharacter: (suit: CardSuitType) => "x" | "♠" | "♥" | "♦" | "♣";
 declare let cardToString: (card: CardType) => string;
 
 export { CardRankSchema, CardSchema, CardSuitSchema, type CardSuitType, type CardType, cardToString, suitToCharacter };

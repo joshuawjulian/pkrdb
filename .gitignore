@@ -1,3 +1,4 @@
 .gitignore
 node_modules
 ./packages/hand-engine/dist/
+dist/
